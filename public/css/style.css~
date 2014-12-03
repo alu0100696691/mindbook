@@ -721,26 +721,3 @@ textarea {
 {
     text-align:center;
 }
-
-/* Flash notices */     
-      
-#flash {
-  margin-bottom: 20px;         
-} 
-    
-#flash .flash {                
-  font-size: 14px;             
-  font-weight: bold;           
-  display: block;              
-  padding: 5px 10px;           
-  background-color: #d8eaef;   
-} 
- 
-#flash .flash.notice {
-  background-color: #ffd35e;
-}
- 
-#flash .flash.error {
-  color: #821515;
-  background-color: #ffacac;
-}

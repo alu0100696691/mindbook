@@ -9,7 +9,20 @@
 
 (function($){
 	$(document).ready(function(){
-		
+
+
+		$('.summernote').summernote({
+  			height: 300,                 // set editor height
+			codemirror: { // codemirror options
+    				theme: 'spacelab'
+  			}
+		});
+			var postForm = function() {
+		    		var content = $('textarea[name="textarea_name"]').html($('#summernote').code());
+			}
+    		
+
+	
 		$(".banner-image").backstretch('images/banner.jpg');
 		
 		// Fixed header
@@ -100,7 +113,7 @@
 				});
 			});
 		};
-
+/*
 		//Modal
 		//-----------------------------------------------
 		if($(".modal").length>0) {
@@ -108,6 +121,6 @@
 				$(".modal").prependTo( "body" );
 			});
 		}
-
+*/
 	}); // End document ready
 })(this.jQuery);
