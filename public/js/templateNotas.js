@@ -10,7 +10,8 @@
 (function($){
 	$(document).ready(function(){
 
-
+				
+		
 		$('.summernote').summernote({
   			height: 300,                 // set editor height
 			codemirror: { // codemirror options
@@ -21,8 +22,18 @@
 		    		var content = $('textarea[name="textarea_name"]').html($('#summernote').code());
 			}
     		
-
-	
+		//Cargar datos de div en verNota con datos del servidor
+		var id = $("#id").data("id");
+		var tit = $("#tit").data("tit");		
+		var des = $("#des").data("des");
+		var not = $("#not").html();
+		
+		$("#idNota").val(id);
+		$("#titulo").val(tit);
+		$("#descripcion").text(des);
+		$('#summernote').code(not);		
+		// cargar datos end
+		
 		$(".banner-image").backstretch('images/banner.jpg');
 		
 		// Fixed header

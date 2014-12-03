@@ -66,6 +66,11 @@ get '/verNota' do
 	erb :verNota
 end
 
+post '/modificarNota' do		
+		Usuario.first(:email => session[:email]).notas.first_or_create(:id=>params[:idNota]).update(:titulo => params[:titulo],:descripcion => params[:descripcion],:notaTexto => params[:textarea_name])				
+		redirect '/home'
+end
+
 post '/guardar' do
 		Usuario.first(:email => session[:email]).notas.create(:titulo => params[:titulo],:descripcion => params[:descripcion],:notaTexto => params[:textarea_name])
 		redirect '/home'

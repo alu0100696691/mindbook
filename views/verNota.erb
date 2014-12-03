@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!-->
 <html lang="en">
-<!--<![endif]-->
-	<head>
-		
-		<title>Ver nota</title>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>Contenido Nota</title>
+	
+	<!-- include jquery -->
+	<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+	
+	<!-- include libraries BS3 -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" />
+	<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+	
+	<!-- include summernote -->
+	<link rel="stylesheet" href="dist/summernote.css">
+	<script type="text/javascript" src="dist/summernote.js"></script>
 
-		<!-- libro CORE STYLE CSS -->
-		<link  href="main.css" rel="stylesheet" media="screen" />
-    		<!-- BOOTSTRAP CORE STYLE CSS -->
-    		<link href="assets/css/bootstrap.css" rel="stylesheet" />
+	
+	<!-- BOOTSTRAP CORE STYLE CSS -->
+<!--   		<link href="assets/css/bootstrap.css" rel="stylesheet" />
     		<!-- FONTAWESOME STYLE CSS -->
     		<link href="assets/css/font-awesome.min.css" rel="stylesheet" />
     		<!-- CUSTOM STYLE CSS -->
@@ -35,7 +44,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
 
 		<!-- Bootstrap core CSS -->
-		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+<!--		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 
 		<!-- Font Awesome CSS -->
 		<link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -47,11 +56,15 @@
 		<link href="css/style.css" rel="stylesheet">
 
 		<!-- Custom css --> 
-		<link href="css/custom.css" rel="stylesheet">
-	</head>
+<!--		<link href="css/custom.css" rel="stylesheet">
 
-	<body class="no-trans">
-		<!-- scrollToTop -->
+
+
+
+</head>
+
+<body class="no-trans">
+	<!-- scrollToTop -->
 		<!-- ================ -->
 		<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
 
@@ -109,9 +122,8 @@
 										<!-- Collect the nav links, forms, and other content for toggling -->
 										<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
 											<ul class="nav navbar-nav navbar-right">
-												<li class="active"><a href="/">Inicio</a></li>												</li>
+												<li class="active"><a href="/">Inicio</a></li>
 												<li><a href="/home">Volver</a></li>
-												<li><a href="#services">Buscar</a></li>
 											</ul>
 										</div>
 
@@ -139,50 +151,46 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2 object-non-visible" data-animation-effect="fadeIn">
-							<h1 class="text-center">Mostrar tu <span>Nota</span></h1>							
+							<h1 class="text-center">Contenido nota: <br> <span><%= @listaNotas.titulo  %></span></h1>							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- banner end -->
-
 		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<div class="container"> 
+		<!-- summernote -->
+		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<div id="book">						
-						<canvas id="pageflip-canvas"></canvas>
-							<div id="pages">						
-								
-									<section>
-										<div>											
-											<%= @listaNotas.notaTexto %>		
-										</div>
-									</section>												
-								
-							</div>	
-					</div>	
-				</div>										
+					<form id="form_id" action="/modificarNota" method="POST"  onsubmit="return postForm()">						
+						<div class="form-group">							
+    							<label class="sr-only" for="titulo">Título</label>
+							<input type="text" name="idNota" class="form-control" id="idNota" style='display:none;'>  <!--oculto: para pasarle el id al servidor y poder modificar registro-->
+    							<input type="text" name="titulo" class="form-control" id="titulo" placeholder="Título de la nota" required>
+    							
+  						</div>
+  						<div class="form-group">
+    							<label class="sr-only" for="descripcion">Descripción</label>
+    							<textarea rows="3" type="text" name="descripcion" class="form-control" id="descripcion" placeholder="Descripción de la nota" required></textarea>
+    							
+  						</div>
+				    		<textarea id="summernote" class="summernote"  rows="6" name="textarea_name" ></textarea>
+						<button type="submit" class="btn btn-default">submit</button>
+					</form>
+				</div>
 			</div>
 		</div>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
 		
+		<!-- Para cargar los datos mediante javascript en templateNota.js -->
+		<div id="id" data-id="<%= @listaNotas.id %>"></div>
+		<div id="tit" data-tit="<%= @listaNotas.titulo %>"></div>
+		<div id="des" data-des="<%= @listaNotas.descripcion %>"></div> 
+		<div id="not" style='display:none;'> <%= @listaNotas.notaTexto %> </div>
+		<!-- templateNota.js end -->
+	
+		<!-- summeronote end -->
+
 		<!-- .subfooter start -->
 			<!-- ================ -->
 			<div class="subfooter">
@@ -202,7 +210,7 @@
 		<!-- JavaScript files placed at the end of the document so the pages load faster
 		================================================== -->
 		<!-- Jquery and Bootstap core js files -->
-		<script type="text/javascript" src="plugins/jquery.min.js"></script>
+<!--		<script type="text/javascript" src="plugins/jquery.min.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
 		<!-- Modernizr javascript -->
@@ -218,16 +226,14 @@
 		<script type="text/javascript" src="plugins/jquery.appear.js"></script>
 
 		<!-- Initialization of Plugins -->
-		<script type="text/javascript" src="js/template.js"></script>
+		<script type="text/javascript" src="js/templateNotas.js"></script>
 
 		<!-- Custom Scripts -->
 		<script type="text/javascript" src="js/custom.js"></script>
 
 		<!-- BOOTSTRAP SCRIPTS  -->
-    		<script src="assets/plugins/bootstrap.js"></script>
-		
-		<!-- libro SCRIPTS  -->
-		<script type="text/javascript" src="pageflip.js"></script>
+<!--   		<script src="assets/plugins/bootstrap.js"></script>
 
-	</body>
-</html>
+
+</body>
+</html
