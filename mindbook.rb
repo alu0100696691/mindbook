@@ -71,6 +71,14 @@ post '/modificarNota' do
 		redirect '/home'
 end
 
+get '/borrarNota' do
+	puts "inside get '/verNota': #{params}"
+	nota = Usuario.first(:email => session[:email]).notas.get(params[:id])
+	nota.destroy
+	flash[:error] = "¡¡¡Nota borrada!!!."
+	redirect '/home'
+end
+
 post '/guardar' do
 		Usuario.first(:email => session[:email]).notas.create(:titulo => params[:titulo],:descripcion => params[:descripcion],:notaTexto => params[:textarea_name])
 		redirect '/home'

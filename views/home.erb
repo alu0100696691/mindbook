@@ -123,7 +123,8 @@
 							<!-- main-navigation end -->
 
 						</div>
-						<!-- header-right end -->
+						<!-- header-right end -->	
+						
 
 					</div>
 				</div>
@@ -146,7 +147,10 @@
 			</div>
 		</div>
 		<!-- banner end -->
-
+		
+		<div id="aviso" class="text-center">                  
+                	<%= styled_flash %>             
+        	</div>
 		
 		<br>
 		<br>
@@ -157,7 +161,7 @@
 		<br>
 		<div class="container"> 
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12">					
 					<div id="book">						
 						<canvas id="pageflip-canvas"></canvas>
 							<div id="pages">						
@@ -167,7 +171,8 @@
 											<h2><%= i.titulo %></h2>
 											<p><%= i.descripcion %>.</p>
 											<!--<form class="form-horizontal" role="form" method="post" action="/verNota">-->
-											<a href="/verNota?id=<%= i.id %>" >Ver Nota</a>											
+											<a href="/verNota?id=<%= i.id %>" >Contenido Nota</a><br>
+											<a href="/borrarNota?id=<%= i.id %>" >Borrar Nota</a>											
 										</div>
 									</section>												
 								<% end %>
