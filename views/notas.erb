@@ -124,6 +124,7 @@
 											<ul class="nav navbar-nav navbar-right">
 												<li class="active"><a href="/">Inicio</a></li>
 												<li><a href="/home">Volver</a></li>
+												<li><a href="/logout"><%=session[:email]%><span class="glyphicon glyphicon-remove"></span>Salir</a></li>
 											</ul>
 										</div>
 
@@ -151,7 +152,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2 object-non-visible" data-animation-effect="fadeIn">
-							<h1 class="text-center">Nota de usuario<br> <span><%= session[:login] %></span></h1>							
+							<h1 class="text-center">Nota de usuario<br> <span><%= session[:email] %></span></h1>							
 						</div>
 					</div>
 				</div>

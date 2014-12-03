@@ -56,6 +56,11 @@ post '/loginUsuario' do
 	end	
 end
 
+get '/logout' do
+	session.clear
+	redirect '/'
+end
+
 get '/notas' do
 	erb:notas
 end
