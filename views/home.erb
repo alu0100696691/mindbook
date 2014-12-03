@@ -109,9 +109,9 @@
 										<!-- Collect the nav links, forms, and other content for toggling -->
 										<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
 											<ul class="nav navbar-nav navbar-right">
-												<li class="active"><a href="/">Inicio</a></li>												</li>
-												<li><a href="/notas">Nueva Nota</a></li>
-												<li><a href="#services">Buscar</a></li>
+												<li class="active"><a href="/"><i class="fa fa-home"></i>Inicio</a></li>												</li>
+												<li><a href="/notas"><i class="fa fa-book"></i>Nueva Nota</a></li>
+												<li><a href="#services"><i class="fa fa-binoculars"></i>Buscar</a></li>
 												<li ><a href="/logout"><%=session[:email]%><span class="glyphicon glyphicon-remove"></span>Salir</a></li>
 											</ul>
 										</div>
@@ -172,8 +172,8 @@
 											<h2><%= i.titulo %></h2>
 											<p><%= i.descripcion %>.</p>
 											<!--<form class="form-horizontal" role="form" method="post" action="/verNota">-->
-											<a href="/verNota?id=<%= i.id %>" >Contenido Nota</a><br>
-											<a href="/borrarNota?id=<%= i.id %>" >Borrar Nota</a>											
+											<a href="/verNota?id=<%= i.id %>" ><i class="fa fa-binoculars"></i>Contenido Nota</a><br>
+											<a href="/borrarNota?id=<%= i.id %>" ><i class="fa fa-eraser"></i>Borrar Nota</a>											
 										</div>
 									</section>												
 								<% end %>
