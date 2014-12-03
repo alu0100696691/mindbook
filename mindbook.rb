@@ -60,6 +60,11 @@ get '/notas' do
 	erb:notas
 end
 
+post '/guardar' do
+		Usuario.first(:email => session[:email]).notas.create(:titulo => params[:titulo],:descripcion => params[:descripcion],:notaTexto => params[:textarea_name])
+		redirect '/home'
+end
+
 get '/home' do
 	@listaNotas = Usuario.first(:email => session[:email]).notas.all
 	erb :home	
