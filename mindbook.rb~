@@ -34,6 +34,10 @@ get '/' do
         erb :index
 end
 
+get '/registro' do
+	erb :registro
+end
+
 
 
 

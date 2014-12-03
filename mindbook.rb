@@ -38,6 +38,24 @@ get '/registro' do
 	erb :registro
 end
 
+post '/newUsuario' do
+	session[:email] = params[:email]
+	session[:login] = params[:login]
+	Usuario.first_or_create(:email => params[:email],:nombre => params[:nombre],:login => params[:login],:password => params[:password])
+	redirect '/home'
+	
+end
+
+post '/loginUsuario' do
+	if Usuario.first(:email => params[:email], :password => params[:password]) then
+		session[:email] = params[:email]
+		redirect '/home'
+	else
+		flash[:error] = "Error. El login o password son incorrectos."
+                redirect '/'
+	end	
+end
+
 
 
 
