@@ -56,6 +56,15 @@ post '/loginUsuario' do
 	end	
 end
 
+get '/notas' do
+	erb:notas
+end
+
+get '/home' do
+	@listaNotas = Usuario.first(:email => session[:email]).notas.all
+	erb :home	
+end
+
 
 
 
