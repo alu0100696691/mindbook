@@ -3,7 +3,7 @@
 ##Proyecto: mindbook
 
 
-**Autores:** MARÍA BELÉN ARMAS TORRES, Jose Antonio Rodríguez Leandro y  Noelia Rodríguez Martín
+**Autores:** María Belén Armas Torres, Jose Antonio Rodríguez Leandro y  Noelia Rodríguez Martín
 			 
 **Fecha:** 24 de Noviembre de 2014
 
