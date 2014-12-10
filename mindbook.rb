@@ -95,9 +95,13 @@ get '/home' do
 end
 
 
+get '/buscar' do
+	erb :buscar
+end
 
+post '/buscarNota' do
 
-
+end
 
 
 
