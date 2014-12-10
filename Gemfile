@@ -6,6 +6,7 @@ gem 'thin'
 gem 'sinatra-contrib'
 gem 'rest-client'
 gem 'data_mapper'
+gem 'pony'
 
 group :development, :test do
 	gem 'rspec'

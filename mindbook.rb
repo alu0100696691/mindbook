@@ -2,6 +2,8 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'sinatra/flash'
 require 'data_mapper'
+require 'pony'
+
 #set :port, 3000
 #set :environment, :production
 
@@ -100,6 +102,25 @@ get '/buscar' do
 end
 
 post '/buscarNota' do
+
+end
+
+post '/contacto' do
+	mail =Pony.mail(:to => "alu0100724622@ull.edu.es", :from => params[:nombre], :subject => params[:email], :body => params[:mensaje])
+	if mail	
+		flash[:notice] = "¡¡¡Email enviado!!!."
+	else
+		flash[:error] = "¡¡¡Error. Email no enviado!!!."
+	end
+
+	erb :index
+end
+
+get '/compartir' do	
+	erb :compartir
+end
+
+post '/compartirNota' do
 
 end
 
