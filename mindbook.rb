@@ -103,6 +103,15 @@ end
 
 post '/buscarNota' do
 
+	@listaNotas = " "
+	@listaNotas = Usuario.first(:email => session[:email]).notas.all(:titulo.like => "%#{params[:titulo]}%") &
+			Usuario.first(:email => session[:email]).notas.all(:descripcion.like => "%#{params[:descripcion]}%") &
+			Usuario.first(:email => session[:email]).notas.all(:notaTexto.like => "%#{params[:textarea_name]}%")
+
+	if @listaNotas == " "
+		flash[:error] = "¡¡¡Nota no encontrada!!!."	
+	end
+	erb :buscar
 end
 
 post '/contacto' do
