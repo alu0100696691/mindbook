@@ -166,7 +166,8 @@
 					<div class="container"> 
 						<div class="row">
 							<div class="col-md-12">	
-								<form class="form-horizontal" role="form" action="/compartirNota" method="POST">									
+								<form class="form-horizontal" role="form" action="/compartirNota" method="POST">
+									<input type="text" name="idNota" class="form-control" id="idNota" style='display:none;' value="<%= @nota.id %>">									
 									<label for="ejemplo_email_3" class="col-lg-2 control-label">Email</label>
 			    						<div class="col-lg-10">
 			      						<input type="email" name="email" class="form-control" id="ejemplo_email_3"  placeholder="Email Usuario a compartir nota">

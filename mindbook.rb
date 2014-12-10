@@ -125,12 +125,20 @@ post '/contacto' do
 	erb :index
 end
 
-get '/compartir' do	
+get '/compartir' do
+	@nota = Usuario.first(:email => session[:email]).notas.get(params[:id])	
 	erb :compartir
 end
 
 post '/compartirNota' do
-
+	@nota = Usuario.first(:email => session[:email]).notas.get(params[:idNota])
+	duplicar = Usuario.first(:email => params[:email]).notas.create(:titulo => @nota.titulo,:descripcion => @nota.descripcion,:notaTexto => @nota.notaTexto)
+	if duplicar
+		flash[:notice] = "¡¡¡Nota compartida con #{params[:email]}!!!."
+	else	
+		flash[:error] = "¡¡¡No se ha podido compartir nota.!!!"		
+	end
+	redirect '/home'
 end
 
 
