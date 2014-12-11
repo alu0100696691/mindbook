@@ -12,12 +12,13 @@ end
 
 class Usuario
 	include DataMapper::Resource
+	include BCrypt
 
 	property :id, Serial, :key => true
 	property :email, Text
 	property :login, Text
 	property :nombre, Text
-	property :password, Text
+	property :password, BCryptHash
 
 	has n, :notas, :constraint => :destroy
 	

@@ -3,6 +3,7 @@ require 'sinatra/reloader' if development?
 require 'sinatra/flash'
 require 'data_mapper'
 require 'pony'
+require 'bcrypt'
 
 #set :port, 3000
 #set :environment, :production
@@ -49,7 +50,8 @@ post '/newUsuario' do
 end
 
 post '/loginUsuario' do
-	if Usuario.first(:email => params[:email], :password => params[:password]) then
+	user = Usuario.first(:email => params[:email])
+	if user && user.password == params[:password] 
 		session[:email] = params[:email]
 		redirect '/home'
 	else

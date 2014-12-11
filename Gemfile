@@ -7,6 +7,7 @@ gem 'sinatra-contrib'
 gem 'rest-client'
 gem 'data_mapper'
 gem 'pony'
+gem 'bcrypt'
 
 group :development, :test do
 	gem 'rspec'

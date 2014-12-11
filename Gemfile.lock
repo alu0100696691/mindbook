@@ -148,6 +148,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   coveralls
   data_mapper
   dm-postgres-adapter
