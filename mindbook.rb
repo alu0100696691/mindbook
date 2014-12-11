@@ -143,6 +143,26 @@ post '/compartirNota' do
 	redirect '/home'
 end
 
+get '/perfil' do
+	@perfil = Usuario.first(:email => session[:email])
+	erb :perfil
+end
+
+post '/perfil' do
+	perfil = Usuario.first(:email => session[:email])
+	if perfil && params[:password] == params[:repassword]
+		perfil.nombre = params[:nombre]
+		perfil.email = params[:email]
+		perfil.password = params[:password]
+		perfil.save	
+		session.clear
+		session[:email] = params[:email]	
+		flash[:notice] = "¡¡¡Perfil actualizado!!!."
+	else
+		flash[:error] = "¡¡¡No se ha podido actualizar el perfil.!!!"	
+	end
+	redirect '/home'
+end
 
 
 

@@ -5,7 +5,7 @@
 <!--<![endif]-->
 	<head>
 		
-		<title>Home</title>
+		<title>Perfil</title>
 
 		<!-- libro CORE STYLE CSS -->
 		<link  href="main.css" rel="stylesheet" media="screen" />
@@ -109,11 +109,9 @@
 										<!-- Collect the nav links, forms, and other content for toggling -->
 										<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
 											<ul class="nav navbar-nav navbar-right">
-												<li class="active"><a href="/"><i class="fa fa-home"></i>Inicio</a></li>												</li>
-												<li><a href="/notas"><i class="fa fa-book"></i>Nueva Nota</a></li>
-												<li><a href="/buscar"><i class="fa fa-binoculars"></i>Buscar</a></li>
-												<li><a href="/perfil"><i class="fa fa-user"></i>Perfil</a></li>
-												<li ><a href="/logout"><%=session[:email]%><span class="glyphicon glyphicon-remove"></span>Salir</a></li>
+												<li class="active"><a href="/"><i class="fa fa-home"></i>Inicio</a></li>
+												<li><a href="/home"><i class="fa fa-hand-o-left"></i>Volver</a></li>
+												<li><a href="/logout"><%=session[:email]%><span class="glyphicon glyphicon-remove"></span>Salir</a></li>
 											</ul>
 										</div>
 
@@ -142,7 +140,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2 object-non-visible" data-animation-effect="fadeIn">
-							<h1 class="text-center">Biblioteca de <span>Notas</span></h1>							
+							<h1 class="text-center">Perfil <span>Usuario</span></h1>							
 						</div>
 					</div>
 				</div>
@@ -164,26 +162,39 @@
 		<div class="container"> 
 			<div class="row">
 				<div class="col-md-12">					
-					<div id="book">						
-						<canvas id="pageflip-canvas"></canvas>
-							<div id="pages">						
-								<% @listaNotas.each do |i| %>
-									<section>
-										<div>
-											<h2><%= i.titulo %></h2>
-											<p><%= i.descripcion %>.</p>
-											<!--<form class="form-horizontal" role="form" method="post" action="/verNota">-->
-											<a href="/verNota?id=<%= i.id %>" ><i class="fa fa-binoculars"></i>Contenido Nota</a><br>
-											<a href="/compartir?id=<%= i.id %>" ><i class="fa fa-hand-o-left"></i>Compartir Nota</a><br>
-											<a href="/borrarNota?id=<%= i.id %>" ><i class="fa fa-eraser"></i>Borrar Nota</a>											
-										</div>
-									</section>												
-								<% end %>
-							</div>	
-					</div>							
+					<!-- form perfil start -->
+					<div class="container"> 
+						<div class="row">
+							<div class="col-md-12">	
+								<form role="form" method="post" action="/perfil">
+									<br/>
+								        <div class="form-group input-group">
+								            <span class="input-group-addon"><i class="fa fa-circle-o-notch"  ></i></span>
+								            <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" value="<%= @perfil.nombre %>" required/>
+								        </div>								     	
+								        <div class="form-group input-group">
+								            <span class="input-group-addon">@</span>
+								            <input type="text" name="email" class="form-control" placeholder="Tu Email" value="<%= @perfil.email %>" required/>
+								        </div>
+								      	<div class="form-group input-group">
+								            <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
+								            <input type="password" name="password" class="form-control" placeholder="Escribir Password" required/>
+								        </div>
+								     	<div class="form-group input-group">
+								            <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
+								            <input type="password" name="repassword" class="form-control" placeholder="Repetir Password" required/>
+								        </div>
+								     	<button type="submit" class="btn btn-success">Actualizar</button>
+								    <hr />
+							    	</form>
+							</div>										
+						</div>
+					</div>
+					<!-- form perfil end -->						
 				</div>										
 			</div>
 		</div>
+		
 		<br>
 		<br>
 		<br>
