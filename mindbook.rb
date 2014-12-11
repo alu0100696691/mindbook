@@ -42,10 +42,15 @@ get '/registro' do
 end
 
 post '/newUsuario' do
-	session[:email] = params[:email]
-	session[:login] = params[:login]
-	Usuario.first_or_create(:email => params[:email],:nombre => params[:nombre],:login => params[:login],:password => params[:password])
-	redirect '/home'
+	if params[:password] == params[:repassword]	
+		session[:email] = params[:email]
+		session[:login] = params[:login]
+		Usuario.first_or_create(:email => params[:email],:nombre => params[:nombre],:login => params[:login],:password => params[:password])
+		redirect '/home'
+	else
+		flash[:error] = "¡¡¡El password no coincide!!!"	
+		redirect '/registro'
+	end	
 	
 end
 
