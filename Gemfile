@@ -8,6 +8,7 @@ gem 'rest-client'
 gem 'data_mapper'
 gem 'pony'
 gem 'bcrypt'
+gem 'do_postgres'
 
 group :development, :test do
 	gem 'rspec'
