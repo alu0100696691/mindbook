@@ -8,6 +8,8 @@ require 'bcrypt'
 #set :port, 3000
 #set :environment, :production
 
+CORREO = "alu0100696691@ull.edu.es"  #correo donde se envia los mensajes de contacto de los usuarios
+
 enable :sessions
 set :session_secret, '*&(^#234a)'
 
@@ -122,7 +124,7 @@ post '/buscarNota' do
 end
 
 post '/contacto' do
-	mail =Pony.mail(:to => "alu0100724622@ull.edu.es", :from => params[:nombre], :subject => params[:email], :body => params[:mensaje])
+	mail =Pony.mail(:to => CORREO, :from => params[:nombre], :subject => params[:email], :body => params[:mensaje])
 	if mail	
 		flash[:notice] = "¡¡¡Email enviado!!!."
 	else
