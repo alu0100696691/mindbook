@@ -19,3 +19,7 @@ Un ejemplo, muy común en nuestra futura profesión, es no acordarnos de los dis
 
 [Github](https://github.com/alu0100696691/mindbook)
 
+###Integración continua en Travis
+
+[![Build Status](https://travis-ci.org/alu0100696691/mindbook.svg?branch=master)](https://travis-ci.org/alu0100696691/mindbook)
+
