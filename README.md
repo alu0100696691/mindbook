@@ -16,5 +16,6 @@ Un ejemplo, muy común en nuestra futura profesión, es no acordarnos de los dis
 ###Despliegue en Heroku 	
 
 [Aplicación en Heroku](https://mindbooks.herokuapp.com/)
+
 [Github](https://github.com/alu0100696691/mindbook)
 
