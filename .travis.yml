@@ -6,4 +6,3 @@ before_install:
 - sudo apt-get install libpq-dev
 - gem install pg
 - sudo apt-get install postgresql
-- sudo apt-get install postgresql-server-dev-9.3
